@@ -73,7 +73,7 @@ jobs:
       - name: Check HTTP health endpoint
         run: |
           curl --fail --silent --show-error \
-            --retry 15 --retry-delay 2 --retry-connrefused --retry-max-time 60 \
+            --retry 15 --retry-delay 2 --retry-all-errors --retry-max-time 60 \
             --connect-timeout 2 --max-time 5 \
             "http://127.0.0.1:${PORT}/health" --output /tmp/health-response
           test "$(cat /tmp/health-response)" = "ok"
